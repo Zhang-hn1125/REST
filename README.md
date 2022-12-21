@@ -4,9 +4,10 @@ The tutorial on GitHub
 
 Download the code.  
 
-Windows or Linux platform could both run. Firstly, you should install Anaconda  
+Here, we recommend Linux system. Firstly, you should install Anaconda
 
-We tested on the NVIDIA GeForce GTX 1080 Ti and NVIDIA GeForce GTX 2080 Ti. The version of cuda must be 10.1 and cudnn is 7.6.5. So the version of the graphics card should be compatible with cuda10.1.  
+We tested on the NVIDIA GeForce GTX 1080 Ti and NVIDIA GeForce GTX 2080 Ti. The version of cuda must be 10.1 and cudnn is 7.6.5. So the version of the graphics card should be compatible with cuda10.1. We recommend the version above. And we also tested the code on GTX 30XX with tensorflow=2.6 and cuda11.2, it also worked successfully.  
+
 
 conda create -y -n rest -c conda-forge python=3.7  
 
