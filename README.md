@@ -140,4 +140,23 @@ python process5_generate_predict.py;
 python rest.py  predict for_predict1.star new_maodel_name.h5  --gpuID 0,1,2,3 --tomo_idx 0;  
 ```
   
+The test datasets have been shared in OneDrive Cloud Disk which can be downloaded from  
+### https://1drv.ms/u/s!AjzgY6BDLb8hzFB0c1pPmcDlwD13?e=NuNO49. 
+
+In the test datesets, the folder named "Rest_material” contains five sub-dictionaries: 
+
+1_tomograms_recovered including the original tomograms and REST-restored tomograms recovered by the authors 
+
+2_evaluation4strategy1 including the original tomograms and the pre-trained model trained by the authors for restoring the tomograms 
+
+3_evaluation4strategy2 including the original tomograms and the pre-trained model trained by the authors for restoring the tomograms 
+
+4_othermap4evaluation including the other maps used in paper 
+
+5_tutorial_of_REST_workflow including two datasets (one dataset of simulated nucleosome tomogram and one dataset of real ribosome tomogram for tutorial. 
+
+
+All of the files can be downloaded individually.
+
+How to work on the test data see the file ###guideline4evaluation.
 
