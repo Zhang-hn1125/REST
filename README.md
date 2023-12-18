@@ -1,13 +1,21 @@
 The tutorial on GitHub  
--------------
+===
+
+###          The effect on real datasets
+![Image text](img/EMPIAR10045-01.png)
+<p align="center">ribosome</p>
+
+![Image text](img/nucleosome-01.png)
+<p align="center">nucleosome</p>
+
 
 ### Ⅰ.Installation and data preparation
 
 Download the code.  
 
-Here, we recommend Linux system. Firstly, you should install Anaconda
+Here, we recommend **Linux** system. Firstly, you should have conda 
 
-We tested on the NVIDIA GeForce GTX 1080 Ti and NVIDIA GeForce GTX 2080 Ti. The version of cuda must be **10.1** and cudnn is **7.6.5**. So the version of the graphics card should be compatible with cuda10.1. We recommend the version above. And we also tested the code on GTX 30XX with **tensorflow=2.6** and **cuda11.2**, it also worked successfully.  
+For example, if you work on the cuda version **10.1** and cudnn is **7.6.5....** (NVIDIA GeForce GTX 1080 Ti and NVIDIA GeForce GTX 2080 Ti .....), the tensorflow version should be 2.3.And we also tested the code on GTX 30XX with **tensorflow=2.8** and **cuda11.4**, it also worked successfully.  
 
 ```
 conda create -y -n rest -c conda-forge python=3.7 
@@ -28,7 +36,7 @@ pip install -r requirements.txt
 3). According to alignment parameters in star files. used _e2proc3d.py_ program to rotate and shift the averaged map to generate the ground truth. The command is like  
  
 ```
-e2proc3d.py --rot=spider:phi=-64:theta=28:psi=62 --trans=6.2,0.4,28.6ribosome.mrc y_0.mrc
+e2proc3d.py --rot=spider:phi=-64:theta=28:psi=62 --trans=6.2,0.4,28.6 ribosome.mrc y_0.mrc
 ```
 Here, __‘--rot=spider:phi=-64:theta=28:psi=62 --trans=6.2,0.4,28.6’__ is the parameters of orientation which has been calculated from Relion star file, __‘ribosome.mrc’__ is the averaged map from STA and __‘y_0.mrc’__ is the ground truth of the particle according to the parameter.  
 
@@ -42,7 +50,7 @@ You can directly use the pipeline of HEMNMA_3D in Scipion to generate the simula
 
 2). Using the program of _‘Modes analysis&visualization’_ to generate the Normal modes  
 
-3). Using the program _‘Synthesize volumes’_ to generate the simulated data, in this program, you can set the parameters of volume number, voxel size, voxel size, SNR, tilt range, SNR, and settings in CTF.  
+3). Using the program _‘Synthesize volumes’_ to generate the simulated data, in this program, you can set the parameters of volume number, voxel size, SNR, tilt range, and settings in CTF.  
 
 4). Extract the ground truth in the output named __‘*_df.vol’__ and use _e2proc3d.py_ program to convert the file format from .vol to .mrc.  
 
@@ -60,17 +68,18 @@ Copy all files downloaded here in the project folder and execute them in the pro
 
 4). Preprocess:  
 ```
+python generate_subtomostar.py subtomo 64 96; cp subtomo.star process2/.
 python process1.py;  
-
 cd process2/;  
-
 python process2.py;  
-
 cd ..;  
-
 python process3_linux.py;  
-
-python splite_trainset.py;  
+python splite_trainset.py;
+```
+or
+_if your CropSize and CubeSize are all 64_
+```
+sh onestep.sh
 ```
 5). train:  
 
@@ -137,7 +146,7 @@ The number of gpu you want to use
 ```
 python process5_generate_predict.py;  
 
-python rest.py  predict for_predict1.star new_maodel_name.h5  --gpuID 0,1,2,3 --tomo_idx 0;  
+python rest.py  predict for_predict1.star real_ribosome_strategy1.h5  --gpuID 0,1,2,3 --tomo_idx 0 --crop_size 96 --cube_size 64 ; #（single patch only need one GPU)  
 ```
   
 The test datasets have been shared in OneDrive Cloud Disk which can be downloaded from  
