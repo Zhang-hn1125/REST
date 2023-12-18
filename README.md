@@ -7,7 +7,7 @@ Download the code.
 
 Here, we recommend Linux system. Firstly, you should install Anaconda
 
-For example, if you work on the NVIDIA GeForce GTX 1080 Ti and NVIDIA GeForce GTX 2080 Ti. The version of cuda should be **10.1** and cudnn is **7.6.5**. So the version of the graphics card should be compatible with cuda10.1. And we also tested the code on GTX 30XX with **tensorflow=2.8** and **cuda11.4**, it also worked successfully.  
+We tested on the NVIDIA GeForce GTX 1080 Ti and NVIDIA GeForce GTX 2080 Ti. The version of cuda must be **10.1** and cudnn is **7.6.5**. So the version of the graphics card should be compatible with cuda10.1. We recommend the version above. And we also tested the code on GTX 30XX with **tensorflow=2.6** and **cuda11.2**, it also worked successfully.  
 
 ```
 conda create -y -n rest -c conda-forge python=3.7 
@@ -42,7 +42,7 @@ You can directly use the pipeline of HEMNMA_3D in Scipion to generate the simula
 
 2). Using the program of _‘Modes analysis&visualization’_ to generate the Normal modes  
 
-3). Using the program _‘Synthesize volumes’_ to generate the simulated data, in this program, you can set the parameters of volume number, voxel size, SNR, tilt range, and settings in CTF.  
+3). Using the program _‘Synthesize volumes’_ to generate the simulated data, in this program, you can set the parameters of volume number, voxel size, voxel size, SNR, tilt range, SNR, and settings in CTF.  
 
 4). Extract the ground truth in the output named __‘*_df.vol’__ and use _e2proc3d.py_ program to convert the file format from .vol to .mrc.  
 
@@ -139,11 +139,7 @@ python process5_generate_predict.py;
 
 python rest.py  predict for_predict1.star new_maodel_name.h5  --gpuID 0,1,2,3 --tomo_idx 0;  
 ```
-
-
-
-
- 
+  
 The test datasets have been shared in OneDrive Cloud Disk which can be downloaded from  
 ### https://1drv.ms/u/s!AjzgY6BDLb8hzFB0c1pPmcDlwD13?e=NuNO49. 
 

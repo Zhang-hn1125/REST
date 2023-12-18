@@ -23,7 +23,7 @@ from REST.preprocessing.simulate import apply_wedge1 as  apply_wedge
 from multiprocessing import Pool
 from functools import partial
 from REST.training.train import prepare_first_model, train_data,train3D_continue
-
+print(''' \033[1;31m<<Preprocessing your data in process2!>>\033[0m''')
 dic={ 'gpuID': None,
  'iterations': None,
  'data_dir': None,

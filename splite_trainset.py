@@ -34,6 +34,8 @@ import numpy as np
 from functools import partial
 from REST.util.rotations import rotation_list
 import argparse
+
+print(''' \033[1;31m<<Splite training set start!>>\033[0m''')
 parser2 = argparse.ArgumentParser(description='refine your model using simulated data')
 
 parser2.add_argument('--initial_model', default=None,type=str, help=' Name of the pre-trained model. Leave empty to train a new one.')
@@ -168,3 +170,4 @@ for i in ind:
     os.rename('{}/train_x/{}'.format(settings.data_dir, all_path_x[i]), '{}/test_x/{}'.format(settings.data_dir, all_path_x[i]) )
     os.rename('{}/train_y/{}'.format(settings.data_dir, all_path_y[i]), '{}/test_y/{}'.format(settings.data_dir, all_path_y[i]) )
     #os.rename('data/train_y/'+all_path_y[i], 'data/test_y/'+all_path_y[i])
+print(''' \033[1;31m<<Splite training set done!>>\033[0m''')

@@ -27,7 +27,7 @@ class REST:
     crop_size:int=64,use_deconv_tomo=True, batch_size:int=None,normalize_percentile: bool=True,log_level: str="info", tomo_idx=None):
         """
         \nPredict tomograms using trained model\n
-        REST.py predict star_file model [--gpuID] [--output_dir] [--cube_size] [--crop_size] [--batch_size] [--tomo_idx]
+        rest.py predict star_file model [--gpuID] [--output_dir] [--cube_size] [--crop_size] [--batch_size] [--tomo_idx]
         :param star_file: star for tomograms.
         :param output_dir: file_name of output predicted tomograms
         :param model: path to trained network model .h5
@@ -43,8 +43,9 @@ class REST:
         """
         d = locals()
         d_args = Arg(d)
+        print(''' \033[1;31m<<Start recovery using the model! Single patch only need one GPU>>\033[0m''')
         from REST.bin.predict import predict
-
+	
 
         if d_args.log_level == "debug":
             logging.basicConfig(format='%(asctime)s, %(levelname)-8s %(message)s',

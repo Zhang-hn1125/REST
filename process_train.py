@@ -34,6 +34,10 @@ import numpy as np
 from functools import partial
 from REST.util.rotations import rotation_list
 import argparse
+
+
+
+
 parser2 = argparse.ArgumentParser(description='refine your model using simulated data')
 
 parser2.add_argument('--initial_model', default=None,type=str, help=' Name of the pre-trained model. Leave empty to train a new one.')
@@ -42,7 +46,11 @@ parser2.add_argument('--epoch', default=2,type=int, help=' The epoch for trainin
 parser2.add_argument('--step', default=1500,type=int, help=' The step of each epoch. Maybe you need find a suitable parameters to train your data')
 parser2.add_argument('--num_gpu', default=1,type=int, help=' The number of gpu you want to use')
 
+
+
 args_zhn = parser2.parse_args()
+
+print(''' \033[1;34m<<Refine your model using simulated data start! Your new model will named %s>>\033[0m'''%(args_zhn.new_model_name))
 
 dic={ 'gpuID': None,
  'iterations': None,
@@ -182,8 +190,11 @@ history = train3D_continue('{}/model_iter{:0>2d}.h5'.format(settings.result_dir,
                                         result_folder = settings.result_dir,
                                         epochs=epoch,
                                         steps_per_epoch=step,
-                                        batch_size=settings.batch_size,
+                                        batch_size=batch_size1,
                                         lr = 0.0001,
                                         n_gpus=num_gpu)
 if args_zhn.new_model_name is not None:
     shutil.copyfile( 'results/model_iter00.h5',args_zhn.new_model_name)
+
+print(''' \033[1;34m<<Training completed>>\033[0m''')
+

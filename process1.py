@@ -24,6 +24,8 @@ from multiprocessing import Pool
 from functools import partial
 from REST.training.train import prepare_first_model, train_data,train3D_continue
 
+print(''' \033[1;31m<<Preprocessing your data!>>\033[0m''')
+
 dic={ 'gpuID': None,
  'iterations': None,
  'data_dir': None,
